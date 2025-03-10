@@ -1,6 +1,6 @@
 {
     "_comments": {
-        "purpose": "此配置文件用于自定义 ask-ollama 服务的行为",
+        "purpose": "此配置文件用于自定义 Ollama_MCP_Guidance 服务的行为",
         "usage": "首次使用时请根据您的环境修改 ollama 和 api_doc 部分的配置",
         "warning": "api.endpoints 部分为 Ollama API 标准端点，除非 Ollama 官方升级，否则请勿修改"
     },
@@ -10,9 +10,9 @@
             "timeout": "API 请求超时时间（秒）。如果您的网络较慢或处理大型请求，可能需要增加此值",
             "user_agent": "请求标识，建议保持默认值"
         },
-        "host": "http://192.168.152.104:50113",
+        "host": "http://localhost:11434",
         "timeout": 30,
-        "user_agent": "ask-ollama/1.0"
+        "user_agent": "Ollama_MCP_Guidance/1.0"
     },
     "api_doc": {
         "_description": {

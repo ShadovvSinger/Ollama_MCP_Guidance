@@ -34,7 +34,7 @@ with open('config.json', 'r', encoding='utf-8') as f:
     config = json.load(f)
 
 # 初始化 FastMCP 服务器实例
-mcp = FastMCP("ask-ollama")
+mcp = FastMCP("Ollama_MCP_Guidance")
 
 # API 配置
 OLLAMA_HOST = config['ollama']['host']

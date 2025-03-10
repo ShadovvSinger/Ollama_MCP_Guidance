@@ -1,7 +1,7 @@
 [project]
-name = "ask-ollama"
+name = "Ollama_MCP_Guidance"
 version = "0.1.0"
-description = "A MCP-based Ollama API interaction service providing standardized interfaces and structured responses"
+description = "A MCP-based Ollama API interaction service providing standardized interfaces and intelligent guidance for LLMs"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}

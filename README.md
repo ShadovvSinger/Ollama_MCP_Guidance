@@ -1,10 +1,10 @@
-# ask-ollama
+# Ollama_MCP_Guidance
 
 > 🎯 **快速开始**：
 > 如果您正在通过 LLM（如 Claude）使用本项目，请首先让 LLM 调用 `get_started_guide` 工具。
 > 这个入门指南将帮助 LLM 全面了解项目，从而为您提供更好的服务。
 
-基于 MCP (Model Context Protocol) 的 Ollama API 交互服务。该项目提供了一个标准化的接口，用于与 Ollama 服务进行交互，支持模型查询、文本生成、对话等功能。
+基于 MCP (Model Context Protocol) 的 Ollama API 交互服务。该项目提供了一个标准化的接口，用于与 Ollama 服务进行交互，并为 LLM 提供智能化的 API 调用指导。
 
 > ⚠️ **项目状态说明**：
 > - 这是一个 Cursor MCP Server 项目，目前仅支持在 Cursor 中使用
@@ -54,7 +54,7 @@ uv pip install .
     "ollama": {
         "host": "http://localhost:11434",  // Ollama 服务地址
         "timeout": 30,                     // 请求超时时间（秒）
-        "user_agent": "ask-ollama/1.0"     // 请求标识
+        "user_agent": "Ollama_MCP_Guidance/1.0"     // 请求标识
     },
     "api_doc": {
         "max_length": 8000,                // 文档内容最大长度
@@ -71,7 +71,7 @@ uv pip install .
 
 ### 1. 创建运行脚本
 
-由于 Cursor MCP 需要从默认命令行环境中执行单条命令，建议创建一个自定义运行脚本。创建 `ask-ollama-cli` 文件（以下以 macOS/Linux 为例）：
+由于 Cursor MCP 需要从默认命令行环境中执行单条命令，建议创建一个自定义运行脚本。创建 `ollama-mcp-cli` 文件（以下以 macOS/Linux 为例）：
 （如果有不理解的地方，请提供信息，让AI来帮助你）
 
 ```bash
@@ -86,7 +86,7 @@ uv pip install .
 # fi
 
 # 项目路径配置
-PROJECT_PATH="你的项目路径/ask-ollama"
+PROJECT_PATH="你的项目路径/Ollama_MCP_Guidance"
 if [ ! -d "$PROJECT_PATH" ]; then
     echo "Error: Project directory not found at $PROJECT_PATH"
     exit 1
@@ -95,27 +95,27 @@ fi
 # 运行程序
 cd "$PROJECT_PATH"
 source .venv/bin/activate  # 激活 uv 虚拟环境
-python ask-ollama-server.py "$@"
+python ollama_mcp_server.py "$@"
 ```
 
 然后设置脚本权限：
 ```bash
-chmod +x ask-ollama-cli
+chmod +x ollama-mcp-cli
 ```
 
-> 注意：Windows 用户需要创建 `ask-ollama-cli.bat` 文件，内容相应调整。
+> 注意：Windows 用户需要创建 `ollama-mcp-cli.bat` 文件，内容相应调整。
 
 ### 2. 在 Cursor 中配置
 
 1. 启动 Ollama 服务
 2. 在 Cursor 的 MCP 配置中，使用以下命令：
 ```bash
-/完整路径/ask-ollama-cli
+/完整路径/ollama-mcp-cli
 ```
 
 > 提示：如果将脚本放在系统的可执行文件路径中（如 `/usr/local/bin/`），则可以直接使用脚本名称：
 > ```bash
-> ask-ollama-cli
+> ollama-mcp-cli
 > ```
 
 ### 3. 基本功能示例
