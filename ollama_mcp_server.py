@@ -11,6 +11,8 @@ Licensed under the MIT License. See LICENSE file for the full license text.
 # - Dict: 字典类型 {key: value}
 from typing import Any, List, Optional, Dict, Union
 
+from pydantic import FileUrl
+
 # json: 用于处理 JSON 数据
 import json
 
@@ -25,6 +27,7 @@ from pathlib import Path
 
 # FastMCP: MCP 框架的服务器组件
 from mcp.server.fastmcp import FastMCP
+from mcp.server.stdio import stdio_server
 
 # text_utils: 用于文本处理和导航
 from text_utils import navigate_sections
@@ -1131,6 +1134,15 @@ async def get_api_doc_section(
         "truncation": truncation,
         "content": nav_result["content"]
     }, indent=2)
+
+@mcp.resource("file://api-md")
+def read_api_file() -> str:
+    """读取 API 文档资源"""
+    try:
+        with open('ollama-api.md', "r", encoding="utf-8") as f:
+            return f.read()
+    except Exception as e:
+        raise ValueError(f"读取文档失败: {str(e)}")
 
 if __name__ == "__main__":
     # Initialize and run server
