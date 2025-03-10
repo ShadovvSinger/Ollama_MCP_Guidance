@@ -1,0 +1,61 @@
+{
+    "_comments": {
+        "purpose": "此配置文件用于自定义 ask-ollama 服务的行为",
+        "usage": "首次使用时请根据您的环境修改 ollama 和 api_doc 部分的配置",
+        "warning": "api.endpoints 部分为 Ollama API 标准端点，除非 Ollama 官方升级，否则请勿修改"
+    },
+    "ollama": {
+        "_description": {
+            "host": "Ollama 服务地址，默认为本地服务。如果您的 Ollama 运行在其他机器上，请修改为对应地址",
+            "timeout": "API 请求超时时间（秒）。如果您的网络较慢或处理大型请求，可能需要增加此值",
+            "user_agent": "请求标识，建议保持默认值"
+        },
+        "host": "http://192.168.152.104:50113",
+        "timeout": 30,
+        "user_agent": "ask-ollama/1.0"
+    },
+    "api_doc": {
+        "_description": {
+            "max_length": "文档内容的最大长度限制（字符数）。如果您的终端或应用有显示限制，请适当调整此值",
+            "file_path": "API 文档文件路径，除非您手动移动了文档位置，否则无需修改"
+        },
+        "max_length": 8000,
+        "file_path": "ollama-api.md"
+    },
+    "api": {
+        "_warning": "以下为 Ollama 官方 API 端点，请勿随意修改，除非您确认 Ollama API 已更新",
+        "_security_notice": {
+            "admin_endpoints": ["copy", "pull", "push", "delete", "create", "blobs"],
+            "warning": "出于安全考虑，涉及模型管理的端点（copy、pull、push、delete、create、blobs）当前不会实现，因为这些是管理员级别的操作",
+            "status": "这些端点虽然在配置中保留，但相关功能在代码中不会实现，以防止潜在的安全风险"
+        },
+        "_deprecated": {
+            "embeddings": "/api/embeddings 端点已被 /api/embed 替代，但为了向后兼容仍然可用"
+        },
+        "endpoints": {
+            "get": {
+                "ps": "/api/ps",
+                "version": "/api/version",
+                "tags": "/api/tags"
+            },
+            "head": {
+                "check_blob": "/api/blobs/:digest"
+            },
+            "post": {
+                "generate": "/api/generate",
+                "chat": "/api/chat",
+                "embed": "/api/embed",
+                "embeddings": "/api/embeddings",
+                "create": "/api/create",
+                "push_blob": "/api/blobs/:digest",
+                "copy": "/api/copy",
+                "pull": "/api/pull",
+                "push": "/api/push",
+                "show": "/api/show"
+            },
+            "delete": {
+                "delete": "/api/delete"
+            }
+        }
+    }
+} 
